@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>Home</title>
+<style>
+#navbar{
+list-style-type: none;
+margin:10px;
+overflow: hidden;
+background-color: #333;
+} 
+.navbar-content{
+float:left;
+}
+.navbar-content a{
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+.navbar-content a:hover{
+background-color:grey;
+}
+.active{
+background-color: orange;
+}
+.a{
+background-color: #ADD8E6;
+font-size:20px;
+}
+.b{
+background-color:#D3D3D3;
+font-size:50px;
+text-align: center;
+color: yellow;
+padding: 50px;
+margin: 50px;
+}
+#search{
+    float: right;
+    margin-right: 100px;
+    margin-top: 5px;
+}
+#searchbar{
+    width:300px;
+    padding: 7px;
+    font-size: 15px;
+}
+#myUL{
+    list-style: none;
+    display: none;
+    border-style: groove ;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+#myUL a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    z-index: 1;
+}
+
+#myUL li{
+    border-bottom-style: groove;
+    border-width: 100%;
+    padding: 10px;
+    background-color: white;
+    z-index: 1;
+}
+#myUL li:hover{
+    background-color: whitesmoke;
+    z-index: 1;
+}
+header{
+    position: absolute;
+    top:15px;
+    right: 50px;
+    z-index: 1;
+}
+body{
+    width: 100%;
+    margin: 0 auto;
+}
+iframe{
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    border-style: none;
+}
+</style>
+</head>
+<body>
+<ul id="navbar">
+<li class="navbar-content"> <a class="active" id="home" href="home.html">Home</a></li>
+<li class="navbar-content"> <a id="about" href="aboutus.html" target="iframe1"> About Us</a></li>
+<li class="navbar-content"> <a id="login" href="login.html" target="iframe1"> Login/Sign Up </a></li>  
+</ul>
+<header>
+<input onkeyup="search()" id="searchbar" type="text" placeholder="Search..." value=""></li>
+  <ul id="myUL">
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Jeff Bezos</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Agnes</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Billy</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Bob</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Calvin</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Christina</li></a>
+    <a href="info.php?type=open&name=jeff bezos" target="iframe1"><li>Cindy</li></a>
+  </ul>
+</header>
+<iframe name="iframe1" width="100%" src="introduction.html"></iframe>
+</body>
+</html>
+<script>
+    function search() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("searchbar");
+        filter = input.value.toUpperCase();
+        if(filter!="")
+        {
+        document.getElementById("myUL").style.display="block";
+        }
+        else
+        {
+        document.getElementById("myUL").style.display="none";
+        }
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("a");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("li")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+$(document).ready(function(){
+    $("#about").click(function(){
+        $("#about").addClass("active");
+        $("#home").removeClass("active");
+        $("#login").removeClass("active");
+    })
+    $("#login").click(function(){
+        $("#login").addClass("active");
+        $("#home").removeClass("active");
+        $("#about").removeClass("active");
+    })
+});
+</script>
